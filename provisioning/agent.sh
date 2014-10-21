@@ -81,6 +81,7 @@ fi
 
 # Bounce all the services just in case.
 echo "The puppet catalog has been applied. We're now bouncing all the services to get everything up and running."
+service elasticsearch restart
 service nginx restart
 
 echo "All the dependencies have been restarted, sleeping for a bit to give them time to start up properly"

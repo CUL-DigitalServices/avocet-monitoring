@@ -1,5 +1,7 @@
 {
     "classes": [
+        "::stats::elasticsearch",
+        "::stats::kibana",
         "::stats::nginx"
     ]
 }
