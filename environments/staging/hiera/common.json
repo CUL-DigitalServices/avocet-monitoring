@@ -1,0 +1,19 @@
+{
+    "classes": [
+        "::stats::deps::common"
+    ],
+
+    "pp_os_user": "root",
+    "pp_os_group": "root",
+
+    "nodetype": "%{nodetype}",
+    "nodesuffix": "%{nodesuffix}",
+
+    "stats_dir": "/opt/kibana",
+
+    "nginx::owner": "nginx",
+    "nginx::group": "nginx",
+    "nginx::rate_limit_api": false,
+    "nginx::ssl_policy": "allow_http",
+    "nginx::version": "latest"
+}

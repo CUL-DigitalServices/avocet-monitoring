@@ -1,0 +1,34 @@
+<% if ssl_policy == 'redirect_http' -%>
+server {
+<% if server_name == 'default_server' -%>
+    listen          80 default_server;
+<% else -%>
+    listen          80;
+    server_name     <%= server_name %>;
+<% end -%>
+    return          301 https://$host$request_uri;
+}
+<% end -%>
+
+server {
+<% if server_name == 'default_server' -%>
+<% if ssl_policy == 'allow_http' -%>
+    listen      80 default_server;
+<% end -%>
+    listen      443 default_server ssl;
+<% else -%>
+<% if ssl_policy == 'allow_http' -%>
+    listen      80;
+<% end -%>
+    listen      443 ssl;
+    server_name <%= server_name %>;
+<% end -%>
+
+    ssl_certificate      <%= ssl_crt_path %>;
+    ssl_certificate_key  <%= ssl_key_path %>;
+
+    # Prevent BEAST attack
+    # @see http://www.kb.cert.org/vuls/id/864643
+    ssl_ciphers RC4:HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
+}
