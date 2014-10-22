@@ -46,11 +46,10 @@ http {
 
     server {
         listen              80 default_server;
-        root                /opt/kibana;
         server_name         staging0.avocet.cam.ac.uk;
 
         location / {
-            autoindex       on;
+            proxy_pass      http://127.0.0.1:5601;
         }
     }
 }

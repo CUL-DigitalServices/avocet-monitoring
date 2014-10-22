@@ -9,7 +9,13 @@
     "nodetype": "%{nodetype}",
     "nodesuffix": "%{nodesuffix}",
 
-    "stats_dir": "/opt/kibana",
+    "stats_dir": "/opt/stats",
+    "stats_install_method": "archive",
+    "stats_install_config": {
+        "url_base": "https://download.elasticsearch.org/kibana/kibana",
+        "url_extension": "tar.gz",
+        "version_major_minor": "4.0.0-BETA1.1"
+    },
 
     "nginx::owner": "nginx",
     "nginx::group": "nginx",
