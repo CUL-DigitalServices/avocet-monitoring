@@ -1,5 +1,5 @@
-# Upstart script for Kibana
-description "Startup script for Kibana"
+# Upstart script for Logstash
+description "Startup script for Logstash"
 
 start on (local-filesystems and net-device-up IFACE=!lo)
 stop on shutdown
@@ -10,9 +10,9 @@ respawn limit 5 30
 limit nofile 65550 65550
 
 # ENVIRONMENT
-chdir /opt/kibana
+chdir /opt/logstash
 
-# RUN KIBANA
+# RUN LOGSTASH
 script
-    exec bin/kibana
+    exec bin/logstash -f /etc/logstash/logstash-avocet.conf
 end script

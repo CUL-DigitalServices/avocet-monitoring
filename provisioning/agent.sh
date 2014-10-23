@@ -78,14 +78,19 @@ if [ $STATUS_CODE -ne 0 ] ; then
     echo "Since puppet didn't finish properly, we have to abort here"
     exit 1;
 fi
+echo "The puppet catalog has been applied."
 
 # Bounce all the services just in case.
-echo "The puppet catalog has been applied. We're now bouncing all the services to get everything up and running."
+echo "We're now bouncing all the services to get everything up and running."
+
+sleep 10
+
 service elasticsearch restart
+service logstash restart
 service kibana restart
 service nginx restart
 
-echo "All the dependencies have been restarted, sleeping for a bit to give them time to start up properly"
-sleep 5
+echo "Give the dependencies some time to start up properly"
+sleep 10
 
-echo "Done!"
+echo "Done! All the dependencies have been restarted."

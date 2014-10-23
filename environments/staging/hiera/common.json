@@ -9,12 +9,19 @@
     "nodetype": "%{nodetype}",
     "nodesuffix": "%{nodesuffix}",
 
-    "stats_dir": "/opt/stats",
+    "stats_dir": "/opt/kibana",
     "stats_install_method": "archive",
     "stats_install_config": {
         "url_base": "https://download.elasticsearch.org/kibana/kibana",
         "url_extension": "tar.gz",
         "version_major_minor": "4.0.0-BETA1.1"
+    },
+
+    "logstash_install_method": "archive",
+    "logstash_install_config": {
+        "url_base": "https://download.elasticsearch.org/logstash/logstash",
+        "url_extension": "tar.gz",
+        "version_major_minor": "1.4.2"
     },
 
     "nginx::owner": "nginx",

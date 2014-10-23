@@ -13,6 +13,6 @@ class stats::kibana {
   class { '::kibana':
     install_method        => $install_method,
     install_config        => $install_config,
-    stats_dir             => hiera('stats_dir', '/opt/stats')
+    stats_dir             => hiera('stats_dir', '/opt/kibana')
   }
 }

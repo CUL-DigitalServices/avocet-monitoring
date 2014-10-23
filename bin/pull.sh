@@ -6,6 +6,6 @@
 #
 # Erik Froese <erik@hallwaytech.com>
 #
-git pull
+# git pull
 git submodule sync
 git submodule update --init
