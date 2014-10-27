@@ -1,0 +1,18 @@
+# Upstart script for Logstash
+description "Startup script for Logstash"
+
+start on (local-filesystems and net-device-up IFACE=!lo)
+stop on shutdown
+
+# Restart the process if it dies with a signal
+respawn
+respawn limit 5 30
+limit nofile 65550 65550
+
+# ENVIRONMENT
+chdir /opt/logstash
+
+# RUN LOGSTASH
+script
+    exec bin/logstash -f /etc/logstash/logstash-avocet.conf
+end script

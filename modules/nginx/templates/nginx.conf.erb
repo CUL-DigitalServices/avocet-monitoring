@@ -1,0 +1,55 @@
+user                    <%= owner %> <%= group %>;
+worker_processes        5;
+worker_rlimit_nofile    8192;
+
+pid         /var/run/nginx.pid;
+lock_file   /var/run/nginx.lock;
+
+events {
+  worker_connections    4096;
+}
+
+http {
+    include <%= nginx_mimes_path %>;
+
+    # Allows us to have "server_name" strings up to 32 characters
+    server_names_hash_bucket_size  64;
+
+
+    ####################
+    ## PROXY SETTINGS ##
+    ####################
+
+    proxy_next_upstream error timeout http_502;
+    # Only give the app server 5 seconds for a request before assuming it's down and retrying
+    proxy_connect_timeout   5;
+    proxy_read_timeout      <%= base_read_timeout %>;
+
+    # Rewrite http headers to upstream servers
+    proxy_http_version 1.1;
+    proxy_redirect off;
+    proxy_set_header Connection "";
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_set_header X-NginX-Proxy true;
+
+    # Limit requests per second per remote address
+    limit_req_zone          $binary_remote_addr  zone=addr_api:10m          rate=90r/s;
+    limit_req_zone          $binary_remote_addr  zone=addr_api_create:10m   rate=2r/s;
+    limit_req_log_level     error;
+
+
+    ####################
+    ## LOAD BALANCING ##
+    ####################
+
+    server {
+        listen              80 default_server;
+        server_name         staging0.avocet.cam.ac.uk;
+
+        location / {
+            proxy_pass      http://127.0.0.1:5601;
+        }
+    }
+}

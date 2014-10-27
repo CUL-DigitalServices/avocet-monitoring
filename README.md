@@ -6,7 +6,7 @@ Puppet configuration for the Avocet monitoring environment.
 
 ##### Get the source code
 
-Clone [avocet-monitoring](https://github.com/CUL-DigitalServices/avocet-monitoring).
+Clone [avocet-monitoring](https://github.com/CUL-DigitalServices/avocet-monitoring) into `/opt/avocet-monitoring`.
 
 ##### Download the Oracle JDK
 

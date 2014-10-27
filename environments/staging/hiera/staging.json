@@ -1,0 +1,8 @@
+{
+    "classes": [
+        "::stats::elasticsearch",
+        "::stats::kibana",
+        "::stats::logstash",
+        "::stats::nginx"
+    ]
+}

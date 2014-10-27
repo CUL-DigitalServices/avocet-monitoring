@@ -1,0 +1,21 @@
+[submodule "modules/vcsrepo"]
+    path = modules/vcsrepo
+    url = https://github.com/puppetlabs/puppetlabs-vcsrepo
+[submodule "modules/iptables"]
+    path = modules/iptables
+    url = https://github.com/camptocamp/puppet-iptables.git
+[submodule "modules/sysctl"]
+    path = modules/sysctl
+    url = https://github.com/duritong/puppet-sysctl.git
+[submodule "modules/stdlib"]
+    path = modules/stdlib
+    url = https://github.com/puppetlabs/puppetlabs-stdlib
+[submodule "modules/archive"]
+    path = modules/archive
+    url = https://github.com/camptocamp/puppet-archive.git
+[submodule "modules/alternatives"]
+    path = modules/alternatives
+    url = https://github.com/adrienthebo/puppet-alternatives.git
+[submodule "modules/ulimit"]
+    path = modules/ulimit
+    url = https://github.com/arioch/puppet-ulimit.git

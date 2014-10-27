@@ -1,0 +1,41 @@
+{
+    "classes": [
+        "::stats::deps::common"
+    ],
+
+    "pp_os_user": "root",
+    "pp_os_group": "root",
+
+    "nodetype": "%{nodetype}",
+    "nodesuffix": "%{nodesuffix}",
+
+    "stats_dir": "/opt/kibana",
+    "stats_install_method": "archive",
+    "stats_install_config": {
+        "url_base": "https://download.elasticsearch.org/kibana/kibana",
+        "url_extension": "tar.gz",
+        "version_major_minor": "4.0.0-BETA1.1"
+    },
+
+    "logstash_install_method": "archive",
+    "logstash_install_config": {
+        "url_base": "https://download.elasticsearch.org/logstash/logstash",
+        "url_extension": "tar.gz",
+        "version_major_minor": "1.4.2"
+    },
+
+    "nginx::owner": "nginx",
+    "nginx::group": "nginx",
+    "nginx::rate_limit_api": false,
+    "nginx::ssl_policy": "allow_http",
+    "nginx::version": "latest",
+
+    "search_hosts": [ "127.0.0.1" ],
+    "search_index": "0",
+    "search_data_dir": "/var/lib/elasticsearch",
+    "search_memory_mb": 512,
+    "search_version": "1.4.0.Beta1",
+
+    "rsyslog_enabled": false,
+    "rsyslog_host": "127.0.0.1"
+}
