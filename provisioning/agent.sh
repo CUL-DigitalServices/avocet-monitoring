@@ -2,18 +2,12 @@
 
 # Do a basic check to see if we have a good environment to start from
 # Check if the oracle-java binary is present
-ORACLE_JDK_INSTALLER="jdk-6u45-linux-x64.bin"
+ORACLE_JDK_INSTALLER="jdk-7u65-linux-x64.gz"
 if [ ! -f /opt/avocet-monitoring/modules/oracle-java/files/$ORACLE_JDK_INSTALLER ] ; then
-    echo "The Oracle JDK installer is not present in the correct location or is not executable."
+    echo "The Oracle JDK installer is not present in the correct location."
     echo "Please download $ORACLE_JDK_INSTALLER from the Oracle website and place it at:"
     echo "modules/oracle-java/files/$ORACLE_JDK_INSTALLER"
     exit 1
-fi
-
-# Check if the installer is marked as executable
-if [ ! -x /opt/avocet-monitoring/modules/oracle-java/files/$ORACLE_JDK_INSTALLER ] ; then
-    echo "The Oracle JDK installer was not marked as executable, marking it for you."
-    chmod 755 /opt/avocet-monitoring/modules/oracle-java/files/$ORACLE_JDK_INSTALLER
 fi
 
 # We need puppet version 3+
